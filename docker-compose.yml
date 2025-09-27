@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  devgate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    container_name: devgate-app
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - devgate-network
+
+networks:
+  devgate-network:
+    driver: bridge
